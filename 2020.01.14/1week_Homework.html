@@ -1,0 +1,135 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- JS -->		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<title>로그인페이지</title>
+	<style>
+		.mytitle {
+			color: white;
+			text-align: center;
+			background-image: url('http://image.auction.co.kr/itemimage/17/e1/0c/17e10c2826.jpg');
+			background-size: cover;
+			background-position: center;
+			width: 650px;
+			height: 600px;
+			border-radius: 10px;
+
+			/* display flex를 쓸 때엔 아래 네 줄이 항상 묶여 다닙니다. */
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.account > h1 {
+			font-family: 'Nanum Pen Script', cursive;
+		}
+		.col-auto.my-1 {
+			width: 650px;
+		}
+		
+		.inlineFormCustomSelect {
+			width: auto;
+		}
+
+		.mr-sm-2 {
+			width: 95px;
+			height: 31px;
+		}
+		.custom-select {
+			width: 495px;
+			height: 31px
+		}
+		
+		.col-sm-2 .col-form-label .col-form-label-sm {
+			width: 400px;
+		}
+		/* 자식선택자: mytitle 바로 아래 있는 h1 태그 */
+
+		.wrap {
+			width: 600px;
+			margin: 30px auto 0 auto;
+			font-size: .875rem;
+
+		}
+		.order {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+	</style>
+</head>
+<<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+<body>
+	<div class="wrap">
+		<div class="mytitle">
+		</div >
+		<div class="account">
+			<h1>"집사야 캣닢 없냐?"</h1>
+			<h4>주인님에게 미움받고 있지는 않으신가요?<br>캣닢 하나만 있어도 해결!<br>주인님의 사랑을 받을 수 있는 절호의 기회! 놓치지 마세요<br> </h4>
+			<h7>1주에 하나씩 배송 됩니다.! (구독 선택시 확인후 주문 바랍니다.)<br><br><h7>
+			</div>
+
+
+			<form>
+				<div class="form-group row">
+					<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">집사님 이름</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="empty">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">주소</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="empty">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">전화번호</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="empty">
+					</div>
+				</div>
+				<form>
+					<div class="form-row align-items-center">
+						<div class="col-auto my-1">
+							<label class="mr-sm-2" for="inlineFormCustomSelect">구독 </label>
+							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect"> 
+								<option selected>선택</option>
+								<option value="1">4주</option>
+								<option value="1">8주</option>
+								<option value="2">12주</option>
+								<option value="3">36주</option>
+							</select>
+						</div>
+					</div>
+				</form>
+			</form>
+			<div class="icon-text-field__frame-box _addressBookAddressErrorStatus">
+				<div class="icon-text-field__icon-container">
+					<div class="icon-text-field__icon-box icon-text-field__icon-box--fix">
+						<div class="icon-text-field__icon--map-pin">
+						</div>
+					</div>   `
+				</div>
+			</div>
+			<div class="order">
+				<button type="button" class="btn btn-primary">주문하기</button>
+			</div>
+		</div>
+
+
+
+	</body>
+	</html>

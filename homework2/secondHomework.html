@@ -1,0 +1,135 @@
+<html lang = "en">
+<head>
+	<title>맥북을 지키는 슬리브</title>
+	<link rel = "stylesheet" type = "text/css" href = "homework2_style.css">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- JS -->		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script>
+
+    	function order_final() {
+    		let name = $('#order_name').val();
+    		let count = $('#order_count').val();
+    		let address = $('#order_address').val();
+    		let phone = $('#order_phone').val();
+
+    		let regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
+    		if (name == '') {
+    			alert('이름을 입력해주세요')
+    			$('#order_name').focus();
+    			return false;
+    		} else if (count == '') {
+    			alert('수량을 입력해주세요')
+    			$('#order_count').focus();
+    			return false;
+    		} else if (address == '') {
+    			alert('주소를 입력해주세요')
+    			$('#order_address').focus();
+    			return false;
+    		} else if (phone == '') {
+    			alert('핸드폰 번호 입력해주세요')
+    			$('#order_phone').focus();
+    			return false;
+    		} else if (!regExp.test(phone)) {
+    			alert('다시 입력해 주세요');
+    			return false;
+    		} 
+
+
+    		$('#check_order').append(name);
+    		$('#check_order').append(count);
+    		$('#check_order').append(address);
+    		$('#check_order').append(phone);
+    	}
+    	function info_remove() {
+    		$('#check_order').empty()
+    	}
+
+    	function inventory(name, count, address, phone) {
+    		let item_list = '<tr> \
+    		<td>'+ name +'</td>\
+    		<td>'+ count +'</td>\
+    		<td>'+address +'</td>\
+    		<td>'+ phone +'</td>\
+    		</tr>';
+    		$('#check_order').append(item_list);
+    	}
+    </script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="main_img"></div>
+		<h1>당신의 노트북 안전하신가요?</h1>
+		<h3>어디서든 당신의 소중한 랩탑 보호하세요</h3>
+
+
+		<div class="order">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
+				</div>
+				<input type="text" class="form-control" id="order_name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+             <label class="input-group-text" for="inputGroupSelect01">수량</label>
+         </div>
+         <select class="custom-select" id="order_count">
+             <option selected value>Choose...</option>
+             <option value="1">One</option>
+             <option value="2">Two</option>
+             <option value="3">Three</option>
+         </select>
+     </div>
+     <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+     </div>
+     <input type="text" class="form-control" id="order_address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+ </div>
+ <div class="input-group mb-3">
+    <div class="input-group-prepend">
+     <span class="input-group-text" id="inputGroup-sizing-default">핸드폰 번호</span>
+ </div>
+ <input type="text" class="form-control" id="order_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+<button id="btn-posting-box" onclick="order_final()" type="button" class="btn btn-primary">주문하기</button>
+<button id="btn-posting-box" onclick="order_final_remove()" type="button" class="btn btn-secondary">정보 삭제하기</button>
+</div>
+
+<!-- 주문자 정보 출력 -->
+<div class="check">
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Count</th>
+      <th scope="col">Adress</th>
+      <th scope="col">PhoneNumber</th>
+  </tr>
+</thead>
+<tbody id = check_order>
+ <tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</body>
+
+</body>
+</html>
