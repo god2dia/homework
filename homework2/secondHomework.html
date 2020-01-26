@@ -61,11 +61,19 @@
    <td>'+address +'</td>\
    <td>'+ phone +'</td>\
    </tr>'
+
    $('#check_order').append(item_list);
 
+
  }
+
  function order_final_remove() {
-  $('#check_order').html('')
+
+  $('#order_name').val(''); //이름 초기화
+  $('#order_color').val(''); //색상 초기화
+  $('#order_count').val(''); //수량 초기화
+  $('#order_address').val(''); //주소 초기화
+  $('#order_phone').val(''); //핸드폰 번호 초기화
 }
 
 </script>
@@ -76,6 +84,7 @@
     <div class="txt">
       <h1>소중한 당신의 노트북</h1>
       <h3>좋은 옷으로 보호해주세요</h3>
+      <SECTION>price_40$</SECTION>
     </div>
 
     <div class="order">
@@ -96,6 +105,7 @@
      <option value="Brown Red">Brown Red</option>
    </select>
  </div>
+
  <div class="input-group mb-3">
   <div class="input-group-prepend">
    <label class="input-group-text" for="inputGroupSelect01">수량</label>
@@ -107,23 +117,27 @@
    <option value="3">Three</option>
  </select>
 </div>
+
 <div class="input-group mb-3">
   <div class="input-group-prepend">
    <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
  </div>
  <input type="text" class="form-control" id="order_address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
+
 <div class="input-group mb-3">
   <div class="input-group-prepend">
    <span class="input-group-text" id="inputGroup-sizing-default">핸드폰 번호</span>
  </div>
+
  <input type="text" class="form-control" id="order_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
 <div class="order">
   <button id="btn-posting-box" onclick="order_final()" type="button" class="btn btn-primary">주문하기</button>
-  <button id="btn-posting-box" onclick="order_final_remove()" type="button" class="btn btn-secondary">정보 삭제하기</button>
+  <button id="btn-posting-box" onclick="order_final_remove()" type="button" class="btn btn-secondary">Reset</button>
 </div>
 </div>
+
 
 <!-- 주문자 정보 출력 -->
 <div class="check">
