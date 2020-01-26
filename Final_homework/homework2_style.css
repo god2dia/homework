@@ -1,0 +1,48 @@
+* {
+	font-family: 'Yeon Sung', cursive;
+}
+
+.txt {
+	font-family: 'Nanum Myeongjo', serif;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.main_img {
+	color: white;
+	text-align: center;
+	background-image: url('http://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/19/6/7/5/5/9/0/mnaTE/2362675590_B.jpg');
+	background-size: cover;
+	background-position: center;
+	width: 640px;
+	height: 600px;
+	border-radius: 10px;
+
+	/* display flex를 쓸 때엔 아래 네 줄이 항상 묶여 다닙니다. */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	margin: 30px auto 0 auto;
+}
+
+
+.order {
+	width: 640px;
+	margin: 10px auto 0 auto;
+	text-align: center;
+}
+
+.check {
+	width: 500px;
+	margin: 30px auto;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
