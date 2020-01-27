@@ -1,6 +1,6 @@
 <html lang = "en">
 <head>
-	<title>맥북을 지키는 슬리브</title>
+  <title>맥북을 지키는 슬리브</title>
   <!-- css파일 분리 -->
   <link rel = "stylesheet" type = "text/css" href = "homework2_style.css">
 
@@ -13,7 +13,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <!-- JS -->		
+  <!-- JS -->   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -25,68 +25,66 @@
     }
 
 
-   function order_final() {
-    let name = $('#order_name').val();
-    let color = $('#order_color').val();
-    let count = $('#order_count').val();
-    let address = $('#order_address').val();
-    let phone = $('#order_phone').val();
+    function order_final() {
+      let name = $('#order_name').val();
+      let color = $('#order_color').val();
+      let count = $('#order_count').val();
+      let address = $('#order_address').val();
+      let phone = $('#order_phone').val();
 
-    let regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+      let regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
-    if (name == '') {
-     alert('이름을 입력해주세요')
-     $('#order_name').focus();
-     return false;
-   } else if (count == '') {
-     alert('색상을 선택 해주세요')
-     $('#order_color').focus();
-     return false;
-   } else if (count == '') {
-     alert('수량을 선택 해주세요')
-     $('#order_count').focus();
-     return false;
-   } else if (address == '') {
-     alert('주소를 입력해주세요')
-     $('#order_address').focus();
-     return false;
-   } else if (phone == '') {
-     alert('핸드폰 번호 입력해주세요')
-     $('#order_phone').focus();
-     return false;
-   } else if (!regExp.test(phone)) {
-     alert('휴대폰 번호를 다시 입력해 주세요');
-     return false;
+      if (name == '') {
+       alert('이름을 입력해주세요')
+       $('#order_name').focus();
+       return false;
+     } else if (count == '') {
+       alert('색상을 선택 해주세요')
+       $('#order_color').focus();
+       return false;
+     } else if (count == '') {
+       alert('수량을 선택 해주세요')
+       $('#order_count').focus();
+       return false;
+     } else if (address == '') {
+       alert('주소를 입력해주세요')
+       $('#order_address').focus();
+       return false;
+     } else if (phone == '') {
+       alert('핸드폰 번호 입력해주세요')
+       $('#order_phone').focus();
+       return false;
+     } else if (!regExp.test(phone)) {
+       alert('휴대폰 번호를 다시 입력해 주세요');
+       return false;
+     }
+
+     let item_list = '<tr>\
+     <td>'+ name +'</td>\
+     <td>'+ color +'</td>\
+     <td>'+ count +'</td>\
+     <td>'+address +'</td>\
+     <td>'+ phone+'</td>\
+     <td>'+ total_price(count)+ '$' +'</td>\
+     </tr>'
+
+     $('#check_order').append(item_list);
+     return order_final_remove();
    }
-
-   let item_list = '<tr>\
-   <td>'+ name +'</td>\
-   <td>'+ color +'</td>\
-   <td>'+ count +'</td>\
-   <td>'+address +'</td>\
-   <td>'+ phone+'</td>\
-   <td>'+ total_price(count)+ '$' +'</td>\
-   </tr>'
-
-    $('#check_order').append(item_list);
+function order_final_remove() {
     $('#order_name').val(''); //이름 초기화
     $('#order_color').val(''); //색상 초기화
     $('#order_count').val(''); //수량 초기화
     $('#order_address').val(''); //주소 초기화
     $('#order_phone').val(''); //핸드폰 번호 초기화
 
- }
-
-// 함수 호출해서 사용하는 방법을 배우고 싶어요
-//  function order_final_remove() {
-
-// }
+  }
 
 </script>
 </head>
 <body>
-	<div class="wrap">
-		<div class="main_img"></div>
+  <div class="wrap">
+    <div class="main_img"></div>
     <div class="txt">
       <h1>소중한 당신의 노트북</h1>
       <h3>좋은 옷으로 보호해주세요</h3>
