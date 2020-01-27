@@ -19,6 +19,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <script>
+    // 결제금액
+    function total_price(num){
+      return num * 40
+    }
+
 
    function order_final() {
     let name = $('#order_name').val();
@@ -52,29 +57,30 @@
    } else if (!regExp.test(phone)) {
      alert('휴대폰 번호를 다시 입력해 주세요');
      return false;
-   } 
+   }
 
-   let item_list = '<tr> \
+   let item_list = '<tr>\
    <td>'+ name +'</td>\
    <td>'+ color +'</td>\
    <td>'+ count +'</td>\
    <td>'+address +'</td>\
-   <td>'+ phone +'</td>\
+   <td>'+ phone+'</td>\
+   <td>'+ total_price(count)+ '$' +'</td>\
    </tr>'
 
-   $('#check_order').append(item_list);
-
+    $('#check_order').append(item_list);
+    $('#order_name').val(''); //이름 초기화
+    $('#order_color').val(''); //색상 초기화
+    $('#order_count').val(''); //수량 초기화
+    $('#order_address').val(''); //주소 초기화
+    $('#order_phone').val(''); //핸드폰 번호 초기화
 
  }
 
- function order_final_remove() {
+// 함수 호출해서 사용하는 방법을 배우고 싶어요
+//  function order_final_remove() {
 
-  $('#order_name').val(''); //이름 초기화
-  $('#order_color').val(''); //색상 초기화
-  $('#order_count').val(''); //수량 초기화
-  $('#order_address').val(''); //주소 초기화
-  $('#order_phone').val(''); //핸드폰 번호 초기화
-}
+// }
 
 </script>
 </head>
@@ -134,7 +140,6 @@
 </div>
 <div class="order">
   <button id="btn-posting-box" onclick="order_final()" type="button" class="btn btn-primary">주문하기</button>
-  <button id="btn-posting-box" onclick="order_final_remove()" type="button" class="btn btn-secondary">Reset</button>
 </div>
 </div>
 
@@ -149,6 +154,7 @@
     <th scope="col">Count</th>
     <th scope="col">Adress</th>
     <th scope="col">PhoneNumber</th>
+    <th scope="col">Price</th>
   </tr>
 </thead>
 <tbody id = check_order>
@@ -156,7 +162,5 @@
 </table>
 </div>
 </div>
-</body>
-
 </body>
 </html>
