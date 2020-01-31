@@ -1,0 +1,211 @@
+<html lang = "en">
+<head>
+
+  <title>기록2</title>
+  
+
+  <!-- 구글 웹폰트 링크 -->
+  <link href="https://fonts.googleapis.com/css?family=Cute+Font|Nanum+Gothic+Coding|Nanum+Pen+Script|Yeon+Sung&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Cute+Font|Nanum+Gothic+Coding|Yeon+Sung&display=swap" rel="stylesheet">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- JS -->   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- css파일 분리 -->
+  <link rel = "stylesheet" type = "text/css" href = "3week_style.css">
+
+  <script>
+    // #json > ul > li:nth-child(1) > div > span.property
+    // #json > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div - 주소
+
+    // #json > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div > ul > li:nth-child(2) > div - 수량
+
+    // #json > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div > ul > li:nth-child(3) > div - 이름
+
+    // #json > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div > ul > li:nth-child(4) > div - 번호
+// 페이지 로딩시 자동으로 주문목록 info_order에 출력
+
+function order_category() {
+  let info_address = $('#order_address').val();
+  let info_cnt = $('#order_count').val();
+  let info_name = $('#order_name').val();
+  let info_phone = $('#order_phone').val();
+
+  // - 없어도 입력 가능한 방식
+  let regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
+  if (info_name == '') {
+   alert('이름을 입력해주세요')
+   $('#order_name').focus();
+   return false;
+ } 
+       // if (count == '') {
+       //   alert('색상을 선택 해주세요')
+       //   $('#order_color').focus();
+       //   return false;
+       // } 
+       if (info_cnt == '') {
+         alert('수량을 선택 해주세요')
+         $('#order_count').focus();
+         return false;
+       } 
+       if (info_address == '') {
+         alert('주소를 입력해주세요')
+         $('#order_address').focus();
+         return false;
+       } 
+       if (info_phone == '') {
+         alert('핸드폰 번호 입력해주세요')
+         $('#order_phone').focus();
+         return false;
+       } 
+       if (!regExp.test(info_phone)) {
+         alert('휴대폰 번호를 다시 입력해 주세요');
+         return false;
+       }
+     }
+
+    // 페이지가 로딩되면, 아래 주문 목록이 자동으로 보이게 해주시면 됩니다.
+    $(document).ready(function(){
+      $('#info_order').html('');
+      take_info();
+    });
+
+
+    // 추가된 입력값을 포함하여 주문 목록으로 가져온다
+    function take_info() {
+      $.ajax({
+        type: "GET",
+        url: "http://spartacodingclub.shop/order",
+        data: {},
+        success: function(response){
+          if(response['result'] == 'success'){
+            let info_cust = response["orders"];
+            for (let i = 0; i < info_cust.length; i++) {
+             order_list(info_cust[i]['name'],info_cust[i]['count'],info_cust[i]['address'],info_cust[i]['phone'])
+
+           }
+         }
+       }
+     })
+    }
+    
+
+
+    function order_list (name, count, address, phone) {
+     let temp_html = '<tr>\
+     <td>'+ info_name +'</td>\
+     <td>'+info_cnt+'</td>\
+     <td>'+info_address+'</td>\
+     <td>'+info_phone+'</td>\
+     </tr>'
+
+     $('#info_order').append(temp_html);
+   }
+ </script>
+
+ <!-- #json > ul > li:nth-child(1) > div > ul > li:nth-child(3) > div > div -->
+</head>
+<body>
+  <div class="wrap">
+    <div class="main_img">
+      <div class="dynamic_img">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://cdn.pixabay.com/photo/2018/12/11/12/40/leica-3868951_960_720.jpg" class="d-block w-100" alt="...">
+            </div> 
+
+            <div class="carousel-item">
+              <img src="https://lh3.googleusercontent.com/proxy/DecWaJ8yrcIYtZBKfucMR2ZT9NFpeZP0oo4mc_zMqYijQ4SwdeUBBQJ5UfYlzXum4E7ViwYidjE_ZsgPx_8W6rf-GYgZxxNtsu8Fyg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://lh4.googleusercontent.com/proxy/IvaAm5o1YmcUU8EY9o-qnlB9ZUrMiKU0XeSwozHQrKXk1z1YHEei4O52RHdYnnarMDpBCl-NcPvF0OG8VKFp97agO7BFg96xTnWtW8hsEKSbt2d4PA" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="info_product">
+    <h1>'70대 한정' <em>라이카</em><br></h1>
+    <h2>대한민국 광복 70주년 기념판 출시! </h2>
+    <h4>Leica Camera AG는 세계적인 프리미엄 카메라 & 스포츠 옵틱스 제조사 입니다.</h4>
+    <h5>라이카 브랜드의 전설적인 명성은 오랜 세월을 거쳐온 전통과 렌즈, 다양한 광학 기기의 우수함에서 찾아볼 수 있습니다.<br><br>그리고 오늘 날의 라이카는 혁신적인 기술과 만나 당신에게 더욱 뛰어난 이미지 퀄리티와 완벽함을 보장하고 있습니다.</h5>
+    <h6>35,000,000원/대</h6>
+  </div>
+
+  <div class="order_txt">
+   <div class="input-group mb-3">
+    <div class="input-group-prepend">
+     <span class="input-group-text" id="inputGroup-sizing-default">이름</span>
+   </div>
+   <input type="text" class="form-control" id="order_name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+ </div>
+
+ <div class="input-group mb-3">
+  <div class="input-group-prepend">
+   <label class="input-group-text" for="inputGroupSelect01">사은품</label>
+ </div>
+ <select class="custom-select" id="order_count">
+   <option selected value>Choice</option>
+   <option value="1">one + 가죽 케이스</option>
+   <option value="2">one + 35mm 렌즈</option>
+   <option value="3">one + 라이카 라이트 카메라</option>
+ </select>
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+   <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+ </div>
+ <input type="text" class="form-control" id="order_address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+   <span class="input-group-text" id="inputGroup-sizing-default">핸드폰 번호</span>
+ </div>
+ <input type="text" class="form-control" id="order_phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+
+<div class="order_btn">
+  <button id="btn-posting-box" onclick="order_category()" type="button" class="btn btn-primary">주문하기</button>
+</div>
+</div>
+<div class="check_list">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">이름</th>
+        <th scope="col">수량</th>
+        <th scope="col">주소</th>
+        <th scope="col">H.P</th>
+      </tr>
+    </thead>
+    <tbody id="info_order">
+      <!-- 주문내역 출력 -->
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

@@ -58,20 +58,22 @@
        alert('휴대폰 번호를 다시 입력해 주세요');
        return false;
      }
-
      let item_list = '<tr>\
      <td>'+ name +'</td>\
      <td>'+ color +'</td>\
      <td>'+ count +'</td>\
-     <td>'+address +'</td>\
-     <td>'+ phone+'</td>\
-     <td>'+ total_price(count)+ '$' +'</td>\
+     <td>'+ address +'</td>\
+     <td>'+ phone +'</td>\
+     <td>'+ total_price(count) + '$' +'</td>\
      </tr>'
 
      $('#check_order').append(item_list);
+
+
+
      return order_final_remove();
    }
-function order_final_remove() {
+   function order_final_remove() {
     $('#order_name').val(''); //이름 초기화
     $('#order_color').val(''); //색상 초기화
     $('#order_count').val(''); //수량 초기화

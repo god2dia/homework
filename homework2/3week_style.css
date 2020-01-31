@@ -1,0 +1,55 @@
+
+/* 동적 이미지 */
+.dynamic_img { 
+  width: 640px;
+
+  margin: auto;
+  color: white;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+
+}
+
+/* 라이카 소개 맟 가격 */
+.info_product {
+
+  font-size: 100px;
+  width: 640px;
+
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 이름, 수량, 주소, 핸드폰 번호 입력란 */
+.order_txt {
+  width: 640px;
+  margin: 20px auto 0px auto;
+
+}
+
+
+/* 주문하기 버튼 */
+.order_category {
+  width: 640px;
+  margin: 10px auto 0px auto;
+  text-align: center;
+}
+
+.order_btn {
+  margin: 20px auto 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 주문 완료후 확인 란*/
+.check_list {
+  width: 640px;
+  margin: 10px auto 0 auto;
+  text-align: center;
+}
