@@ -1,3 +1,14 @@
+.info_product > h1 {
+  font-family: 'East Sea Dokdo', cursive;
+}
+
+.info_product > h2 {
+  color: grey;
+}
+
+.info_product > h4 ,h5 {
+  font-family: 'Gamja Flower', cursive;
+}
 
 /* 동적 이미지 */
 .dynamic_img { 
@@ -31,14 +42,7 @@
 
 }
 
-
-/* 주문하기 버튼 */
-.order_category {
-  width: 640px;
-  margin: 10px auto 0px auto;
-  text-align: center;
-}
-
+/*주문하기 버튼*/
 .order_btn {
   margin: 20px auto 20px auto;
   display: flex;

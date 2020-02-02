@@ -1,11 +1,12 @@
 <html lang = "en">
 <head>
 
-  <title>기록2</title>
+  <title>명품 카메라 라이카</title>
   
 
   <!-- 구글 웹폰트 링크 -->
-  <link href="https://fonts.googleapis.com/css?family=Cute+Font|Nanum+Gothic+Coding|Nanum+Pen+Script|Yeon+Sung&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cute+Font|East+Sea+Dokdo|Gamja+Flower|Nanum+Gothic+Coding|Yeon+Sung&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cute+Font|East+Sea+Dokdo|Nanum+Gothic+Coding|Yeon+Sung&display=swap" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css?family=Cute+Font|Nanum+Gothic+Coding|Yeon+Sung&display=swap" rel="stylesheet">
   <!-- Required meta tags -->
@@ -24,21 +25,12 @@
   <link rel = "stylesheet" type = "text/css" href = "3week_style.css">
 
   <script>
-    // #json > ul > li:nth-child(1) > div > span.property
-    // #json > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div - 주소
 
-    // #json > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div > ul > li:nth-child(2) > div - 수량
-
-    // #json > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div > ul > li:nth-child(3) > div - 이름
-
-    // #json > ul > li:nth-child(1) > div > ul > li:nth-child(1) > div > ul > li:nth-child(4) > div - 번호
-// 페이지 로딩시 자동으로 주문목록 info_order에 출력
-
-function order_category() {
-  let info_address = $('#order_address').val();
-  let info_cnt = $('#order_count').val();
-  let info_name = $('#order_name').val();
-  let info_phone = $('#order_phone').val();
+    function f_order_category() {
+      let info_name = $('#order_name').val();
+      let info_cnt = $('#order_count').val();
+      let info_address = $('#order_address').val();
+      let info_phone = $('#order_phone').val();
 
   // - 없어도 입력 가능한 방식
   let regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
@@ -48,41 +40,36 @@ function order_category() {
    $('#order_name').focus();
    return false;
  } 
-       // if (count == '') {
-       //   alert('색상을 선택 해주세요')
-       //   $('#order_color').focus();
-       //   return false;
-       // } 
-       if (info_cnt == '') {
-         alert('수량을 선택 해주세요')
-         $('#order_count').focus();
-         return false;
-       } 
-       if (info_address == '') {
-         alert('주소를 입력해주세요')
-         $('#order_address').focus();
-         return false;
-       } 
-       if (info_phone == '') {
-         alert('핸드폰 번호 입력해주세요')
-         $('#order_phone').focus();
-         return false;
-       } 
-       if (!regExp.test(info_phone)) {
-         alert('휴대폰 번호를 다시 입력해 주세요');
-         return false;
-       }
-     }
+ if (info_cnt == '') {
+  alert('수량을 선택 해주세요')
+  $('#order_count').focus();
+  return false;
+} 
+if (info_address == '') {
+ alert('주소를 입력해주세요')
+ $('#order_address').focus();
+ return false;
+} 
+if (info_phone == '') {
+ alert('핸드폰 번호 입력해주세요')
+ $('#order_phone').focus();
+ return false;
+} 
+if (!regExp.test(info_phone)) {
+ alert('휴대폰 번호를 다시 입력해 주세요');
+ return false;
+}
+}
 
     // 페이지가 로딩되면, 아래 주문 목록이 자동으로 보이게 해주시면 됩니다.
     $(document).ready(function(){
       $('#info_order').html('');
-      take_info();
+      f_take_info();
     });
 
 
     // 추가된 입력값을 포함하여 주문 목록으로 가져온다
-    function take_info() {
+    function f_take_info() {
       $.ajax({
         type: "GET",
         url: "http://spartacodingclub.shop/order",
@@ -91,7 +78,7 @@ function order_category() {
           if(response['result'] == 'success'){
             let info_cust = response["orders"];
             for (let i = 0; i < info_cust.length; i++) {
-             order_list(info_cust[i]['name'],info_cust[i]['count'],info_cust[i]['address'],info_cust[i]['phone'])
+             f_order_list(info_cust[i]['name'],info_cust[i]['count'],info_cust[i]['address'],info_cust[i]['phone'])
 
            }
          }
@@ -99,21 +86,19 @@ function order_category() {
      })
     }
     
-
-
-    function order_list (name, count, address, phone) {
+    function f_order_list (name, count, address, phone) {
      let temp_html = '<tr>\
-     <td>'+ info_name +'</td>\
-     <td>'+info_cnt+'</td>\
-     <td>'+info_address+'</td>\
-     <td>'+info_phone+'</td>\
-     </tr>'
+     <td>'+name+'</td>\
+     <td>'+count+'</td>\
+     <td>'+address+'</td>\
+     <td>'+phone+'</td>\
+     </tr>';
 
      $('#info_order').append(temp_html);
    }
  </script>
 
- <!-- #json > ul > li:nth-child(1) > div > ul > li:nth-child(3) > div > div -->
+
 </head>
 <body>
   <div class="wrap">
@@ -145,7 +130,6 @@ function order_category() {
     </div>
   </div>
 
-
   <div class="info_product">
     <h1>'70대 한정' <em>라이카</em><br></h1>
     <h2>대한민국 광복 70주년 기념판 출시! </h2>
@@ -153,6 +137,7 @@ function order_category() {
     <h5>라이카 브랜드의 전설적인 명성은 오랜 세월을 거쳐온 전통과 렌즈, 다양한 광학 기기의 우수함에서 찾아볼 수 있습니다.<br><br>그리고 오늘 날의 라이카는 혁신적인 기술과 만나 당신에게 더욱 뛰어난 이미지 퀄리티와 완벽함을 보장하고 있습니다.</h5>
     <h6>35,000,000원/대</h6>
   </div>
+
 
   <div class="order_txt">
    <div class="input-group mb-3">
@@ -164,13 +149,21 @@ function order_category() {
 
  <div class="input-group mb-3">
   <div class="input-group-prepend">
-   <label class="input-group-text" for="inputGroupSelect01">사은품</label>
+   <label class="input-group-text" for="inputGroupSelect01">본품 + 악세사리</label>
  </div>
  <select class="custom-select" id="order_count">
    <option selected value>Choice</option>
-   <option value="1">one + 가죽 케이스</option>
-   <option value="2">one + 35mm 렌즈</option>
-   <option value="3">one + 라이카 라이트 카메라</option>
+   <option value="1">본품1 + 가죽 케이스</option>
+   <option value="2">본품2 + 35mm 렌즈</option>
+   <option value="3">본품3 + 라이카 라이트 카메라</option>
+
+   <option value="1">본품1 + 가죽 케이스</option>
+   <option value="2">본품2 + 35mm 렌즈</option>
+   <option value="3">본품3 + 라이카 라이트 카메라</option>
+
+   <option value="1">본품1 + 가죽 케이스</option>
+   <option value="2">본품2 + 35mm 렌즈</option>
+   <option value="3">본품3 + 라이카 라이트 카메라</option>
  </select>
 </div>
 
@@ -189,7 +182,7 @@ function order_category() {
 </div>
 
 <div class="order_btn">
-  <button id="btn-posting-box" onclick="order_category()" type="button" class="btn btn-primary">주문하기</button>
+  <button id="btn-posting-box" onclick="f_order_category()" type="button" class="btn btn-primary">주문하기</button>
 </div>
 </div>
 <div class="check_list">
